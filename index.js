@@ -66,10 +66,15 @@ function allWagesFor (employee) {
         hoursWorked.push(wagesEarnedOnDate(employee, employee.timeInEvents[event].date));
     }
     return hoursWorked.reduce((accum, currV) => {
-        return accum + currV
+        return accum + currV;
       });
 }
 
 function calculatePayroll (employeesArray) {
-
-}
+    let totalWages = employeesArray.map((employee) => {
+        return allWagesFor(employee);
+    });
+    return totalWages.reduce((accum, currV) => {
+        return accum + currV;
+    });
+};
